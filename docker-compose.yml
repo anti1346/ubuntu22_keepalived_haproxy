@@ -67,12 +67,13 @@ services:
       my_network:
         ipv4_address: 172.19.0.12
 
-  ubuntu-ansible:
+  ansible:
     image: anti1346/ubuntu2204:ansible
     restart: always
-    container_name: ubuntu-sshd
-    hostname: ubuntu-ansible
-    command: ["/usr/sbin/sshd -D"]
+    container_name: ansible
+    hostname: ansible
+    volumes:
+      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
     ports:
       - "2222:22"
     networks:
