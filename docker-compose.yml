@@ -37,6 +37,36 @@ services:
       my_network:
         ipv4_address: 172.19.0.3
 
+  web01:
+    image: anti1346/ubuntu2204:init
+    restart: always
+    container_name: web01
+    hostname: web01
+    privileged: true
+    command: ["/lib/systemd/systemd"]
+    volumes:
+      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    ports:
+      - "2211:22"
+    networks:
+      my_network:
+        ipv4_address: 172.19.0.11
+
+  web02:
+    image: anti1346/ubuntu2204:init
+    restart: always
+    container_name: web02
+    hostname: web02
+    privileged: true
+    command: ["/lib/systemd/systemd"]
+    volumes:
+      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    ports:
+      - "2212:22"
+    networks:
+      my_network:
+        ipv4_address: 172.19.0.12
+
 networks:
   my_network:
     name: my_network

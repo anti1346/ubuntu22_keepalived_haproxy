@@ -41,13 +41,13 @@ frontend https-in
 
 backend bk_web
     balance     roundrobin
-    server      web1 172.19.0.3:8080 check
-    server      web2 172.19.0.2:8080 check
+    server      web1 172.19.0.2:8080 check
+    server      web2 172.19.0.3:8080 check
 
 backend bk_admin
     balance     roundrobin
-    server      web1 172.19.0.3:8080 check
-    server      web2 172.19.0.2:8080 check
+    server      web1 172.19.0.2:8080 check
+    server      web2 172.19.0.3:8080 check
 
 listen stats
     bind *:9000
