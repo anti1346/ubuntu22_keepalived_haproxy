@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+
+  ha_node01:
+    image: anti1346/ubuntu2204:init
+    restart: always
+    container_name: node01
+    hostname: node01
+    privileged: true
+    command: ["/lib/systemd/systemd"]
+    volumes:
+      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    ports:
+      - "8081:80"
+      - "8443:443"
+      - "9001:9000"
+      - "2222:22"
+    networks:
+      my_network:
+        ipv4_address: 172.19.0.2
+
+  ha_node02:
+    image: anti1346/ubuntu2204:init
+    restart: always
+    container_name: node02
+    hostname: node02
+    privileged: true
+    command: ["/lib/systemd/systemd"]
+    volumes:
+      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    ports:
+      - "8082:80"
+      - "8444:443"
+      - "9002:9000"
+      - "2223:22"
+    networks:
+      my_network:
+        ipv4_address: 172.19.0.3
+
+networks:
+  my_network:
+    name: my_network
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.0.0/24
