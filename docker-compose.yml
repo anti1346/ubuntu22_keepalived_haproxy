@@ -1,15 +1,15 @@
 version: '3.8'
 services:
 
-  ha_node01:
+  haproxy01:
     image: anti1346/ubuntu2204:init
     restart: always
-    container_name: node01
-    hostname: node01
+    container_name: haproxy01
+    hostname: haproxy01
     privileged: true
     command: ["/lib/systemd/systemd"]
-    volumes:
-      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    # volumes:
+    #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
     ports:
       - "8081:80"
       - "8443:443"
@@ -19,15 +19,15 @@ services:
       my_network:
         ipv4_address: 172.19.0.2
 
-  ha_node02:
+  haproxy02:
     image: anti1346/ubuntu2204:init
     restart: always
-    container_name: node02
-    hostname: node02
+    container_name: haproxy02
+    hostname: haproxy02
     privileged: true
     command: ["/lib/systemd/systemd"]
-    volumes:
-      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    # volumes:
+    #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
     ports:
       - "8082:80"
       - "8444:443"
@@ -44,8 +44,8 @@ services:
     hostname: web01
     privileged: true
     command: ["/lib/systemd/systemd"]
-    volumes:
-      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    # volumes:
+    #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
     ports:
       - "2211:22"
     networks:
@@ -59,8 +59,8 @@ services:
     hostname: web02
     privileged: true
     command: ["/lib/systemd/systemd"]
-    volumes:
-      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    # volumes:
+    #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
     ports:
       - "2212:22"
     networks:
@@ -72,8 +72,8 @@ services:
     restart: always
     container_name: ansible
     hostname: ansible
-    volumes:
-      - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+    # volumes:
+    #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
     ports:
       - "2222:22"
     networks:
