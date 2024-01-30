@@ -24,3 +24,29 @@ sudo systemctl status ssh.service
 curl -fsSL https://raw.githubusercontent.com/anti1346/zz/main/etc/vagrant_useradd.sh | bash
 ```
 
+### SSL 인증서 생성
+```
+mkdir -p /etc/ssl/ha_sangchul_kr
+```
+```
+cd /etc/ssl/ha_sangchul_kr
+```
+```
+openssl req \
+-newkey rsa:4096 \
+-x509 \
+-sha256 \
+-days 3650 \
+-nodes \
+-out ha_sangchul_kr.crt \
+-keyout ha_sangchul_kr.key \
+-subj "/C=KR/ST=Seoul/L=Jongno-gu/O=SangChul Co., Ltd./OU=Infrastructure Team/CN=ha.sangchul.kr"
+```
+```
+openssl x509 -in /etc/ssl/ha_sangchul_kr/ha_sangchul_kr.crt -noout -subject -dates
+```
+```
+cat ha_sangchul_kr.key ha_sangchul_kr.crt > unified_ha_sangchul_kr.pem
+```
+
+
