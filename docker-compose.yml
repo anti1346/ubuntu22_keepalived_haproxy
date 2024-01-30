@@ -47,6 +47,7 @@ services:
     # volumes:
     #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
     ports:
+      - "8011:80"
       - "2211:22"
     networks:
       my_network:
@@ -62,6 +63,7 @@ services:
     # volumes:
     #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
     ports:
+      - "8012:80"
       - "2212:22"
     networks:
       my_network:
