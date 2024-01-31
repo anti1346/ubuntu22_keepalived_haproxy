@@ -18,3 +18,7 @@ chmod +x /etc/keepalived/haproxy_check.sh
 
 # 함수 호출하여 스크립트 생성
 generate_haproxy_check_script
+
+
+### Shell Execute Command
+# curl -fsSL https://raw.githubusercontent.com/anti1346/ubuntu22_keepalived_haproxy/main/keepalived/haproxy_check.sh | bash

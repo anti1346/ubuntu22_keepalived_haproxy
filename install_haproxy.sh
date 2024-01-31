@@ -263,3 +263,6 @@ if haproxy -c -f /etc/haproxy/haproxy.cfg -V &>/dev/null; then
     sudo systemctl status haproxy.service
 fi
 
+
+### Shell Execute Command
+# curl -fsSL https://raw.githubusercontent.com/anti1346/ubuntu22_keepalived_haproxy/main/install_haproxy.sh | bash

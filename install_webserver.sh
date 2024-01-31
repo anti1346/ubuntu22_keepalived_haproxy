@@ -95,3 +95,6 @@ if php-fpm8.1 -t &>/dev/null; then
     sudo systemctl restart php8.1-fpm.service
     sudo systemctl status php8.1-fpm.service
 fi
+
+### Shell Execute Command
+# curl -fsSL https://raw.githubusercontent.com/anti1346/ubuntu22_keepalived_haproxy/main/install_webserver.sh | bash
