@@ -13,6 +13,9 @@ sudo apt-get update
 sudo apt-get install -y lsb-release ca-certificates vim rsyslog openssh-server
 ```
 ```
+sudo systemctl start rsyslog
+```
+```
 sudo systemctl --now enable ssh.service
 ```
 ```
@@ -25,6 +28,7 @@ curl -fsSL https://raw.githubusercontent.com/anti1346/zz/main/etc/vagrant_userad
 ```
 
 ### SSL 인증서 생성
+#### haproxy01
 ```
 mkdir -p /etc/ssl/ha_sangchul_kr
 ```
@@ -49,4 +53,16 @@ openssl x509 -in /etc/ssl/ha_sangchul_kr/ha_sangchul_kr.crt -noout -subject -dat
 cat ha_sangchul_kr.key ha_sangchul_kr.crt > unified_ha_sangchul_kr.pem
 ```
 
-
+#### haproxy02
+```
+mkdir -p /etc/ssl/ha_sangchul_kr
+```
+```
+cd /etc/ssl/ha_sangchul_kr
+```
+```
+scp unified_ha_sangchul_kr.pem vagrant@172.19.0.3:~
+```
+```
+ mv /home/vagrant/unified_ha_sangchul_kr.pem .
+```

@@ -1,10 +1,13 @@
-cat <<EOF >> /etc/haproxy/haproxy.cfg
 ### /etc/haproxy/haproxy.cfg
+```
+cat <<EOF > /etc/haproxy/haproxy.cfg
 
 global
     log         127.0.0.1 local2
-    chroot      /var/lib/haproxy
     pidfile     /var/run/haproxy.pid
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+    stats timeout 30s
     maxconn     4000
     user        haproxy
     group       haproxy
@@ -51,8 +54,13 @@ backend bk_admin
     server      web2 172.19.0.12:80 check
 
 listen stats
+    #bind *:1936
     bind *:9000
     stats enable
     stats uri /haproxy_stats
     stats refresh 10s
 EOF
+```
+```
+haproxy -c -f /etc/haproxy/haproxy.cfg -V
+```

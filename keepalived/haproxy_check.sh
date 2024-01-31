@@ -1,6 +1,4 @@
 cat <<EOF >> /etc/keepalived/haproxy_check.sh
-### /etc/keepalived/keepalived.conf
-
 #!/bin/bash
 
 if pidof haproxy > /dev/null; then
@@ -11,3 +9,7 @@ fi
 EOF
 
 sudo chmod +x /etc/keepalived/haproxy_check.sh
+
+sudo systemctl restart keepalived
+
+sudo systemctl status keepalived

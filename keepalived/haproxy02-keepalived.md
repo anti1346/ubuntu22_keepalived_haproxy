@@ -1,5 +1,6 @@
-cat <<EOF >> /etc/keepalived/keepalived.conf
 ### /etc/keepalived/keepalived.conf
+```
+cat <<EOF >> /etc/keepalived/keepalived.conf
 
 global_defs {
     notification_email {
@@ -37,7 +38,13 @@ vrrp_instance VI_1 {
     }
 }
 EOF
-
+```
+```
+keepalived -t
+```
+```
 sudo systemctl restart keepalived
-
+```
+```
 ip -brief address show eth0
+```
