@@ -2,6 +2,8 @@
 
 # HAProxy가 실행 중인지 확인하는 스크립트 생성
 generate_haproxy_check_script() {
+    sudo mkdir -m 755 /etc/keepalived
+
     cat <<EOF > /etc/keepalived/haproxy_check.sh
 #!/bin/bash
 
