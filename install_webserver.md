@@ -26,24 +26,33 @@ curl -fsSL https://raw.githubusercontent.com/anti1346/zz/main/etc/vagrant_userad
 
 ### SSL 인증서 생성
 ```
-mkdir -p /etc/ssl/ha_sangchul_kr
+sudo apt-get install -y nginx php-fpm
 ```
 ```
-cd /etc/ssl/ha_sangchul_kr
+cat <<EOF > /usr/share/nginx/html/index.html
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+        </head>
+        <body>
+                <h1>Welcome to nginx!</h1>
+                <p>node01 - 172.19.0.3</p>
+                <p><em>Thank you for using nginx.</em></p>
+        </body>
+</html>
+EOF
 ```
 ```
-openssl req \
--newkey rsa:4096 \
--x509 \
--sha256 \
--days 3650 \
--nodes \
--out ha_sangchul_kr.crt \
--keyout ha_sangchul_kr.key \
--subj "/C=KR/ST=Seoul/L=Jongno-gu/O=SangChul Co., Ltd./OU=Infrastructure Team/CN=ha.sangchul.kr"
+sudo systemctl --now enable nginx
 ```
 ```
-openssl x509 -in /etc/ssl/ha_sangchul_kr/ha_sangchul_kr.crt -noout -subject -dates
+sudo systemctl --now enable php8.1-fpm
 ```
 ```
 cat ha_sangchul_kr.key ha_sangchul_kr.crt > unified_ha_sangchul_kr.pem
