@@ -55,6 +55,7 @@ if ! dpkg -l | grep -q openssh-server; then
     sudo systemctl restart rsyslog
     sudo systemctl --now enable ssh.service
     sudo sed -i.bak 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+    sudo timedatectl set-timezone Asia/Seoul
     sudo systemctl restart ssh.service
 fi
 

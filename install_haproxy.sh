@@ -170,6 +170,7 @@ if ! dpkg -l | grep -q openssh-server; then
     sudo systemctl restart rsyslog
     sudo systemctl --now enable ssh.service
     sudo sed -i.bak 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+    sudo timedatectl set-timezone Asia/Seoul
     sudo systemctl restart ssh.service
 fi
 
@@ -240,7 +241,7 @@ if [ "$HOSTNAME" == "haproxy02" ]; then
     fi
 
     sudo sed -i.bak "s/state MASTER/state BACKUP/g" /etc/keepalived/keepalived.conf
-    sudo sed -i.bak "s/priority 100/priority 99/g" /etc/keepalived/keepalived.conf
+    sudo sed -i "s/priority 100/priority 99/g" /etc/keepalived/keepalived.conf
 fi
 
 echo -e "\n### rsyslog status"
