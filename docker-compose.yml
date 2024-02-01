@@ -1,41 +1,41 @@
 version: '3.8'
 services:
 
-  haproxy01:
-    image: anti1346/ubuntu2204:init
-    restart: always
-    container_name: haproxy01
-    hostname: haproxy01
-    privileged: true
-    command: ["/lib/systemd/systemd"]
-    # volumes:
-    #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
-    ports:
-      - "8081:80"
-      - "8443:443"
-      - "9001:9000"
-      - "2201:22"
-    networks:
-      my_network:
-        ipv4_address: 172.19.0.2
+  # haproxy01:
+  #   image: anti1346/ubuntu2204:init
+  #   restart: always
+  #   container_name: haproxy01
+  #   hostname: haproxy01
+  #   privileged: true
+  #   command: ["/lib/systemd/systemd"]
+  #   # volumes:
+  #   #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+  #   ports:
+  #     - "8081:80"
+  #     - "8443:443"
+  #     - "9001:9000"
+  #     - "2201:22"
+  #   networks:
+  #     my_network:
+  #       ipv4_address: 172.19.0.2
 
-  haproxy02:
-    image: anti1346/ubuntu2204:init
-    restart: always
-    container_name: haproxy02
-    hostname: haproxy02
-    privileged: true
-    command: ["/lib/systemd/systemd"]
-    # volumes:
-    #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
-    ports:
-      - "8082:80"
-      - "8444:443"
-      - "9002:9000"
-      - "2202:22"
-    networks:
-      my_network:
-        ipv4_address: 172.19.0.3
+  # haproxy02:
+  #   image: anti1346/ubuntu2204:init
+  #   restart: always
+  #   container_name: haproxy02
+  #   hostname: haproxy02
+  #   privileged: true
+  #   command: ["/lib/systemd/systemd"]
+  #   # volumes:
+  #   #   - /usr/share/zoneinfo/Asia/Seoul:/etc/localtime:ro
+  #   ports:
+  #     - "8082:80"
+  #     - "8444:443"
+  #     - "9002:9000"
+  #     - "2202:22"
+  #   networks:
+  #     my_network:
+  #       ipv4_address: 172.19.0.3
 
   web01:
     image: anti1346/ubuntu2204:init
